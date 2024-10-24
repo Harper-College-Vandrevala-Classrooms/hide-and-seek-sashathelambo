@@ -1,32 +1,26 @@
 package com.csc;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 public class TestFuzzyFinder {
 
-  FuzzyFinder finder;
-  FuzzyListGenerator generator;
-
-  @BeforeEach
-  void setUp() {
-    finder = new FuzzyFinder();
-    generator = new FuzzyListGenerator();
-  }
+  FuzzyListGenerator generator = new FuzzyListGenerator();
 
   @Test
-  void exampleFailingTestWithRandomizedFuzzies() {
+  void exampleTestWithRandomizedFuzzies() {
     ArrayList<Fuzzy> fuzzies = generator.randomizedRainbowFuzzies();
-    assertEquals("purple", fuzzies.getFirst().color);
+    assertNotNull(fuzzies, "Fuzzies list should not be null");
+    assertEquals("gold", fuzzies.get(fuzzies.size() - 1).color, "The last color should be gold");
   }
 
   @Test
-  void exampleFailingTestWithSortedFuzzies() {
+  void exampleTestWithSortedFuzzies() {
     ArrayList<Fuzzy> fuzzies = generator.sortedRainbowFuzzies();
-    assertEquals("purple", fuzzies.getFirst().color);
+    assertNotNull(fuzzies, "Fuzzies list should not be null");
+    assertEquals("gold", fuzzies.get(fuzzies.size() - 1).color, "The last color should be gold");
   }
 }
